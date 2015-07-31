@@ -25,4 +25,4 @@ Sandbox application in [React](http://facebook.github.io/react/) about stock exc
   * images/
   * fonts/
 * build/
-* ... _(config files, like `webpack.config.js` and dev files like `server.js`)_
+* ... _(config files like `webpack.config.js` and dev files like `server.js`)_
