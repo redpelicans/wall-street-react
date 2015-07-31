@@ -1,0 +1,46 @@
+{
+  "name": "wall-street-react",
+  "version": "1.0.0",
+  "description": "Sandbox application in about stock exchange",
+  "scripts": {
+    "start": "node server",
+    "lint": "eslint app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/redpelicans/wall-street-react.git"
+  },
+  "keywords": [
+    "spa",
+    "react"
+  ],
+  "author": "Nicolas Briemant",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redpelicans/wall-street-react/issues"
+  },
+  "homepage": "https://github.com/redpelicans/wall-street-react#readme",
+  "devDependencies": {
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "^5.8.19",
+    "babel-eslint": "^4.0.5",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.15.6",
+    "eslint": "^0.24.1",
+    "eslint-plugin-react": "^3.1.0",
+    "express": "^4.13.1",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^0.15.0",
+    "http-proxy": "^1.11.1",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
+    "react-hot-loader": "^1.2.8",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.10.5",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "react": "^0.13.3"
+  }
+}
