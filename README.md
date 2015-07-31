@@ -4,12 +4,12 @@ Sandbox application in [React](http://facebook.github.io/react/) about stock exc
 
 ## Setup
 
-  npm install
+    npm install
 
 ## Usage
 
-  npm start
-  npm run lint
+    npm start
+    npm run lint
 
 ## Misc
 
