@@ -3,7 +3,7 @@ import mui from 'material-ui';
 
 let ThemeManager = new mui.Styles.ThemeManager();
 
-class App extends React.Component {  
+class App extends React.Component {
   getChildContext() {
     return {muiTheme: ThemeManager.getCurrentTheme()};
   }
