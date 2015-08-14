@@ -17,10 +17,11 @@ Sandbox application in [React](http://facebook.github.io/react/) about stock exc
 
 * app/
   * index.js _(entry point)_
-  * app.js
-  * alt.js _(Flux dispatcher instantiation)_
+  * app.jsx
+  * alt.js _(Flux dispatcher instantiation of [AltFlux](http://alt.js.org/))_
+  * routes.jsx _(Routes configuration of [React Router](http://rackt.github.io/react-router/))_
   * components/
-    * component/ _(rely on [AltFlux](http://alt.js.org/))_
+    * component/
       * actions.js
       * store.js
       * component.jsx

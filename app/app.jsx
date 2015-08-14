@@ -1,9 +1,12 @@
 import React from 'react';
+
+import Router from 'react-router';
+let RouteHandler = Router.RouteHandler;
+
 import mui from 'material-ui';
+let ThemeManager = new mui.Styles.ThemeManager();
 
 import Location from './components/location/location';
-
-let ThemeManager = new mui.Styles.ThemeManager();
 
 class App extends React.Component {
   getChildContext() {
@@ -18,6 +21,7 @@ class App extends React.Component {
     return (
       <div>
         <mui.AppBar title="Wall Street" showMenuIconButton={false} />
+        <RouteHandler />
         <div className="pure-g" style={gridStyle}>
           <div className="pure-u-1-3">
             <Location label="Left"/>

@@ -1,5 +1,5 @@
 import Alt from 'alt';
 
-var alt = new Alt();
+let alt = new Alt();
 
 export default alt;
