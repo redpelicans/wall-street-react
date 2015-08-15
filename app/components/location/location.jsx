@@ -28,11 +28,16 @@ class Location extends React.Component {
 
   render() {
     if (this.state.error) {
-      return <mui.Snackbar message={this.state.error} autoHideDuration={1000} />;
+      return (
+        <mui.Card>
+          <mui.CardTitle title={this.state.error.name} subtitle={this.state.error.message} />
+          <mui.CardText>{this.state.error.stack}</mui.CardText>
+        </mui.Card>
+      );
     }
 
     if (!this.state.locations.length) {
-      return <mui.CircularProgress mode="indeterminate" size={2} />;
+      return <mui.LinearProgress mode="indeterminate" size={2} />;
     }
 
     return (

@@ -21,6 +21,9 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   module: {
+    preLoaders: [
+      {test: /\.jsx?$/, loaders: ['regenerator'], include: path.join(__dirname, 'app')}
+    ],
     loaders: [
       {test: /\.jsx?$/, loaders: ['react-hot', 'babel'], include: path.join(__dirname, 'app')},
       {test: /\.css$/, loader: 'style!css!autoprefixer-loader?browsers=last 2 versions'},

@@ -1,3 +1,4 @@
+import co from 'co';
 import alt from '../../alt';
 import LocationFetcher from './location-fetcher';
 
@@ -5,13 +6,9 @@ class LocationActions {
   fetchLocations() {
     this.dispatch(); // trigger the loading state
 
-    LocationFetcher.fetch()
-      .then((locations) => {
-        this.actions.updateLocations(locations);
-      })
-      .catch((error) => {
-        this.actions.failLocations(error);
-      });
+    co(function *() { return yield LocationFetcher.fetch().promise; })
+      .then(this.actions.updateLocations)
+      .catch(this.actions.failLocations);
   }
 
   failLocations(error) {

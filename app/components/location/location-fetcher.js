@@ -2,11 +2,13 @@ import data from './location-data';
 
 class LocationFetcher {
   fetch() {
-    return new Promise(function(resolve) {
-      setTimeout(function() {
-        resolve(data);
-      }, 2000);
-    });
+    let deferred = Promise.defer();
+
+    setTimeout(function() {
+      deferred.resolve(data);
+    }, 2000);
+
+    return deferred;
   }
 }
 
