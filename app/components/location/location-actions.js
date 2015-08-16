@@ -18,6 +18,10 @@ class LocationActions {
   updateLocations(locations) {
     this.dispatch(locations);
   }
+
+  favoriteLocation(location) {
+    this.dispatch(location);
+  }
 }
 
 export default alt.createActions(LocationActions);

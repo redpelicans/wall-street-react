@@ -1,8 +1,9 @@
 import React from 'react';
+import Location from '../location/location';
 
 class Home extends React.Component {
   render() {
-    return <h1>Home</h1>;
+    return <Location />;
   }
 }
 

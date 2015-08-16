@@ -1,5 +1,7 @@
+import _ from 'lodash';
 import alt from '../../alt';
 import LocationActions from './location-actions';
+import LocationFavoriteStore from './location-favorite-store';
 
 class LocationStore {
   constructor() {
@@ -9,7 +11,8 @@ class LocationStore {
     this.bindListeners({
       updateLocationsHandler: LocationActions.UPDATE_LOCATIONS,
       fetchLocationsHandler: LocationActions.FETCH_LOCATIONS,
-      failLocationsHandler: LocationActions.FAIL_LOCATIONS
+      failLocationsHandler: LocationActions.FAIL_LOCATIONS,
+      favoriteLocationHandler: LocationActions.FAVORITE_LOCATION
     });
   }
 
@@ -24,6 +27,15 @@ class LocationStore {
 
   failLocationsHandler(error) {
     this.error = error;
+  }
+
+  favoriteLocationHandler(location) {
+    this.waitFor(LocationFavoriteStore);
+    
+    LocationFavoriteStore.getState().locations.forEach((favoriteLocation) => {
+      let location = _.find(this.locations, 'id', favoriteLocation.id);
+      if (location) location.isFavorite = true;
+    });
   }
 }
 

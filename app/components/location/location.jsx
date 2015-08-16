@@ -10,6 +10,7 @@ class Location extends React.Component {
 
     // prebind (autobinding issue)
     this.onChange = this.onChange.bind(this);
+    this.favoriteLocation = this.favoriteLocation.bind(this);
   }
 
   componentDidMount() {
@@ -24,6 +25,10 @@ class Location extends React.Component {
 
   onChange(state) {
     this.setState(state);
+  }
+
+  favoriteLocation(location) {
+    LocationActions.favoriteLocation(location);
   }
 
   render() {
@@ -43,7 +48,19 @@ class Location extends React.Component {
     return (
       <mui.List subheader={this.props.label}>
         {this.state.locations.map((location) => {
-          return <mui.ListItem primaryText={location.name} key={location.id} />;
+          let isFavoriteIcon = (
+            <mui.FontIcon className="material-icons">
+              {location.isFavorite ? 'favorite' : 'favorite_border'}
+            </mui.FontIcon>
+          );
+          return (
+            <mui.ListItem
+              primaryText={location.name}
+              key={location.id}
+              leftIcon={isFavoriteIcon}
+              onClick={this.favoriteLocation.bind(null, location)}
+            />
+          );
         })}
       </mui.List>
     );
