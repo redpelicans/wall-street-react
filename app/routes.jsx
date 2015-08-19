@@ -1,7 +1,7 @@
 import React from 'react';
 import Router from 'react-router';
 import App from './app';
-import Home from './components/home/home';
+import HomeContainer from './components/home/home';
 import NotFound from './components/not-found/not-found';
 import Location from './components/location/location';
 
@@ -11,7 +11,7 @@ let appRoutesData = [
 
 let routes = (
   <Router.Route path="/" handler={App}>
-    <Router.DefaultRoute handler={Home}/>
+    <Router.DefaultRoute handler={HomeContainer}/>
     <Router.NotFoundRoute handler={NotFound} />
     {appRoutesData.map((routeData) => {
       return (

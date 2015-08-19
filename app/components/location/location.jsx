@@ -8,7 +8,6 @@ class Location extends React.Component {
     super();
     this.state = LocationStore.getState();
 
-    // prebind (autobinding issue)
     this.onChange = this.onChange.bind(this);
     this.favoriteLocation = this.favoriteLocation.bind(this);
   }
