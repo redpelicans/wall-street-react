@@ -35,7 +35,7 @@ Sandbox application in [React](http://facebook.github.io/react/) about stock exc
 
 ### Components
 
-There is 2 types of components:
+There are 2 types of components:
 * __Containers__ _(UserPage, FollowersSidebar, StoryContainer, FollowedUserList)_
   * wrap one or more dumb or smart components
   * hold state from Flux stores and pass it as objects to dumb components
