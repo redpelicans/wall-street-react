@@ -50,4 +50,4 @@ There is 2 types of components:
   * rarely have their own state.
   * might use other dumb components.
 
-_from [Dan Abramov](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)_
+> _from [Dan Abramov](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)_
