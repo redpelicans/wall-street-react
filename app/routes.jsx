@@ -4,9 +4,11 @@ import App from './app';
 import HomeContainer from './components/home/home';
 import NotFound from './components/not-found/not-found';
 import Location from './components/location/location';
+import DealsContainer from './components/deals/deals';
 
 let appRoutesData = [
-  {route: 'location', text: 'Location', handler: Location}
+  {route: 'location', text: 'Location', handler: Location},
+  {route: 'deals', text: 'Deals', handler: DealsContainer}
 ];
 
 let routes = (

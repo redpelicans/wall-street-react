@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var httpProxy = require('http-proxy');
 var http = require('http');
+var jsonServer = require('json-server');
 
 var proxy = httpProxy.createProxyServer({changeOrigin: true, ws: true}); 
 var app = express();
@@ -35,6 +36,14 @@ if (!isProduction) {
   server.listen(port, function () {
     console.log('(dev) running on port ' + port);
   }); 
+
+  var jsonPort = 6805;
+  var jsonDB = jsonServer.create();
+  jsonDB.use(jsonServer.defaults);
+  jsonDB.use(jsonServer.router('db.json'));
+  jsonDB.listen(jsonPort, function() {
+    console.log('(jsonDB) running on port ' + jsonPort);
+  });
 } else {
   app.listen(port, function () {
     console.log('(prod) running on port ' + port);

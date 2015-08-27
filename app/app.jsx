@@ -23,14 +23,6 @@ class App extends React.Component {
     return {muiTheme: ThemeManager.getCurrentTheme()};
   }
 
-  componentWillMount() {
-    ThemeManager.setPalette({
-      primary1Color: mui.Styles.Colors.green500,
-      primary2Color: mui.Styles.Colors.green700,
-      primary3Color: mui.Styles.Colors.green100,
-    });
-  }
-
   toggleLeftNav() {
     this.refs.leftNav.toggle();
   }

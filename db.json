@@ -1,0 +1,408 @@
+{
+  "fofs": [
+    {
+      "id": 1,
+      "label": "CSS",
+      "currency": "TMT"
+    },
+    {
+      "id": 2,
+      "label": "THX",
+      "currency": "BMD"
+    },
+    {
+      "id": 3,
+      "label": "USB",
+      "currency": "MRO"
+    },
+    {
+      "id": 4,
+      "label": "FTP",
+      "currency": "KPW"
+    },
+    {
+      "id": 5,
+      "label": "JSON",
+      "currency": "BZD"
+    },
+    {
+      "id": 6,
+      "label": "SAS",
+      "currency": "CRC"
+    },
+    {
+      "id": 7,
+      "label": "EXE",
+      "currency": "BIF"
+    },
+    {
+      "id": 8,
+      "label": "HTTP",
+      "currency": "CDF"
+    },
+    {
+      "id": 9,
+      "label": "HDD",
+      "currency": "ZAR"
+    },
+    {
+      "id": 10,
+      "label": "EXE",
+      "currency": "XBC"
+    }
+  ],
+  "funds": [
+    {
+      "id": 1,
+      "label": "Russel Inc",
+      "currency": "SOS"
+    },
+    {
+      "id": 2,
+      "label": "Olson and Sons",
+      "currency": "XPD"
+    },
+    {
+      "id": 3,
+      "label": "Dicki and Sons",
+      "currency": "MDL"
+    },
+    {
+      "id": 4,
+      "label": "Weimann, Sporer and Schaden",
+      "currency": "MAD"
+    },
+    {
+      "id": 5,
+      "label": "Ernser and Sons",
+      "currency": "XOF"
+    },
+    {
+      "id": 6,
+      "label": "Weber, Pacocha and Hane",
+      "currency": "NOK"
+    },
+    {
+      "id": 7,
+      "label": "Olson Inc",
+      "currency": "GTQ"
+    },
+    {
+      "id": 8,
+      "label": "Huel, O'Keefe and Fritsch",
+      "currency": "AMD"
+    },
+    {
+      "id": 9,
+      "label": "Konopelski, Armstrong and Raynor",
+      "currency": "OMR"
+    },
+    {
+      "id": 10,
+      "label": "Grady - Wisozk",
+      "currency": "EUR"
+    }
+  ],
+  "deals": [
+    {
+      "id": 1,
+      "fofId": 7,
+      "fof": {
+        "id": 7,
+        "label": "EXE",
+        "currency": "BIF"
+      },
+      "fund": {
+        "id": 2,
+        "label": "Olson and Sons",
+        "currency": "XPD"
+      },
+      "amount": "862.54"
+    },
+    {
+      "id": 2,
+      "fofId": 2,
+      "fof": {
+        "id": 2,
+        "label": "THX",
+        "currency": "BMD"
+      },
+      "fund": {
+        "id": 2,
+        "label": "Olson and Sons",
+        "currency": "XPD"
+      },
+      "amount": "236.41"
+    },
+    {
+      "id": 3,
+      "fofId": 9,
+      "fof": {
+        "id": 9,
+        "label": "HDD",
+        "currency": "ZAR"
+      },
+      "fund": {
+        "id": 8,
+        "label": "Huel, O'Keefe and Fritsch",
+        "currency": "AMD"
+      },
+      "amount": "961.71"
+    },
+    {
+      "id": 4,
+      "fofId": 4,
+      "fof": {
+        "id": 4,
+        "label": "FTP",
+        "currency": "KPW"
+      },
+      "fund": {
+        "id": 10,
+        "label": "Grady - Wisozk",
+        "currency": "EUR"
+      },
+      "amount": "319.28"
+    },
+    {
+      "id": 5,
+      "fofId": 4,
+      "fof": {
+        "id": 4,
+        "label": "FTP",
+        "currency": "KPW"
+      },
+      "fund": {
+        "id": 8,
+        "label": "Huel, O'Keefe and Fritsch",
+        "currency": "AMD"
+      },
+      "amount": "746.73"
+    },
+    {
+      "id": 6,
+      "fofId": 1,
+      "fof": {
+        "id": 1,
+        "label": "CSS",
+        "currency": "TMT"
+      },
+      "fund": {
+        "id": 8,
+        "label": "Huel, O'Keefe and Fritsch",
+        "currency": "AMD"
+      },
+      "amount": "323.16"
+    },
+    {
+      "id": 7,
+      "fofId": 2,
+      "fof": {
+        "id": 2,
+        "label": "THX",
+        "currency": "BMD"
+      },
+      "fund": {
+        "id": 6,
+        "label": "Weber, Pacocha and Hane",
+        "currency": "NOK"
+      },
+      "amount": "813.98"
+    },
+    {
+      "id": 8,
+      "fofId": 1,
+      "fof": {
+        "id": 1,
+        "label": "CSS",
+        "currency": "TMT"
+      },
+      "fund": {
+        "id": 10,
+        "label": "Grady - Wisozk",
+        "currency": "EUR"
+      },
+      "amount": "456.20"
+    },
+    {
+      "id": 9,
+      "fofId": 3,
+      "fof": {
+        "id": 3,
+        "label": "USB",
+        "currency": "MRO"
+      },
+      "fund": {
+        "id": 1,
+        "label": "Russel Inc",
+        "currency": "SOS"
+      },
+      "amount": "587.14"
+    },
+    {
+      "id": 10,
+      "fofId": 7,
+      "fof": {
+        "id": 7,
+        "label": "EXE",
+        "currency": "BIF"
+      },
+      "fund": {
+        "id": 3,
+        "label": "Dicki and Sons",
+        "currency": "MDL"
+      },
+      "amount": "552.09"
+    },
+    {
+      "id": 11,
+      "fofId": 2,
+      "fof": {
+        "id": 2,
+        "label": "THX",
+        "currency": "BMD"
+      },
+      "fund": {
+        "id": 5,
+        "label": "Ernser and Sons",
+        "currency": "XOF"
+      },
+      "amount": "41.36"
+    },
+    {
+      "id": 12,
+      "fofId": 8,
+      "fof": {
+        "id": 8,
+        "label": "HTTP",
+        "currency": "CDF"
+      },
+      "fund": {
+        "id": 6,
+        "label": "Weber, Pacocha and Hane",
+        "currency": "NOK"
+      },
+      "amount": "784.03"
+    },
+    {
+      "id": 13,
+      "fofId": 5,
+      "fof": {
+        "id": 5,
+        "label": "JSON",
+        "currency": "BZD"
+      },
+      "fund": {
+        "id": 1,
+        "label": "Russel Inc",
+        "currency": "SOS"
+      },
+      "amount": "379.29"
+    },
+    {
+      "id": 14,
+      "fofId": 5,
+      "fof": {
+        "id": 5,
+        "label": "JSON",
+        "currency": "BZD"
+      },
+      "fund": {
+        "id": 7,
+        "label": "Olson Inc",
+        "currency": "GTQ"
+      },
+      "amount": "550.64"
+    },
+    {
+      "id": 15,
+      "fofId": 9,
+      "fof": {
+        "id": 9,
+        "label": "HDD",
+        "currency": "ZAR"
+      },
+      "fund": {
+        "id": 10,
+        "label": "Grady - Wisozk",
+        "currency": "EUR"
+      },
+      "amount": "464.30"
+    },
+    {
+      "id": 16,
+      "fofId": 4,
+      "fof": {
+        "id": 4,
+        "label": "FTP",
+        "currency": "KPW"
+      },
+      "fund": {
+        "id": 8,
+        "label": "Huel, O'Keefe and Fritsch",
+        "currency": "AMD"
+      },
+      "amount": "865.92"
+    },
+    {
+      "id": 17,
+      "fofId": 10,
+      "fof": {
+        "id": 10,
+        "label": "EXE",
+        "currency": "XBC"
+      },
+      "fund": {
+        "id": 5,
+        "label": "Ernser and Sons",
+        "currency": "XOF"
+      },
+      "amount": "836.68"
+    },
+    {
+      "id": 18,
+      "fofId": 6,
+      "fof": {
+        "id": 6,
+        "label": "SAS",
+        "currency": "CRC"
+      },
+      "fund": {
+        "id": 3,
+        "label": "Dicki and Sons",
+        "currency": "MDL"
+      },
+      "amount": "132.29"
+    },
+    {
+      "id": 19,
+      "fofId": 5,
+      "fof": {
+        "id": 5,
+        "label": "JSON",
+        "currency": "BZD"
+      },
+      "fund": {
+        "id": 2,
+        "label": "Olson and Sons",
+        "currency": "XPD"
+      },
+      "amount": "288.67"
+    },
+    {
+      "id": 20,
+      "fofId": 9,
+      "fof": {
+        "id": 9,
+        "label": "HDD",
+        "currency": "ZAR"
+      },
+      "fund": {
+        "id": 5,
+        "label": "Ernser and Sons",
+        "currency": "XOF"
+      },
+      "amount": "823.22"
+    }
+  ]
+}
