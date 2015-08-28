@@ -69,10 +69,15 @@ class ToolbarView extends React.Component {
             menuItems={this.props.fofs}
             onChange={this.props.onChangeSelectedFofId}
           />
+          {this.props.fofs.map((fof) => {
+            return (
+              <mui.FlatButton label={fof.label} />
+            );
+          })}
         </mui.ToolbarGroup>
         <mui.ToolbarGroup key={1} float="right">
           <mui.TextField
-            hintText="Search within labels"
+            hintText="Search in fund labels"
             onChange={this.props.onChangeDealsFilter}
           />
         </mui.ToolbarGroup>
@@ -94,7 +99,7 @@ class ListContainer extends React.Component {
 class ListView extends React.Component {
   render() {
     return (
-      <table className="pure-table">
+      <table className="pure-table pure-table-horizontal pure-table-striped">
         <thead>
           <tr>
             <td>Fof</td>

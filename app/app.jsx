@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import Router from 'react-router';
-import routes, {appRoutesData as menuItems} from './routes';
+import routes, {appRoutesData} from './routes';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -13,60 +13,120 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.toggleLeftNav = this.toggleLeftNav.bind(this);
-    this.onLeftNavChange = this.onLeftNavChange.bind(this);
-    this.onLeftNavHeaderClick = this.onLeftNavHeaderClick.bind(this);
-    this.getSelectedIndex = this.getSelectedIndex.bind(this);
+    this.setActiveRoute = this.setActiveRoute.bind(this);
+
+    this.transitionToRoute = this.transitionToRoute.bind(this);
+    this.transitionToHome = this.transitionToHome.bind(this);
   }
 
   getChildContext() {
     return {muiTheme: ThemeManager.getCurrentTheme()};
   }
 
-  toggleLeftNav() {
-    this.refs.leftNav.toggle();
-  }
-
-  getSelectedIndex() {
-    return _.findIndex(menuItems, (menuItem) => {
-      return menuItem.route && this.context.router.isActive(menuItem.route);
+  setActiveRoute() {
+    let appRouteData = _.find(appRoutesData, (appRouteData) => {
+      return this.context.router.isActive(appRouteData.route);
     });
+
+    this.setState({activeRoute: appRouteData ? appRouteData.route : '/'});
   }
 
-  onLeftNavChange(event, key, payload) {
-    this.context.router.transitionTo(payload.route);
+  componentWillMount() {
+    this.setActiveRoute();
   }
 
-  onLeftNavHeaderClick() {
-    this.context.router.transitionTo('/');
-    this.refs.leftNav.close();
+  componentWillReceiveProps() {
+    this.setActiveRoute();
+  }
+
+  transitionToRoute(route) {
+    this.context.router.transitionTo(route);
+    this.setState({activeRoute: route});
+  }
+
+  transitionToHome() {
+    this.transitionToRoute('/');
   }
 
   render() {
-    let headerLeftNavStyle = {
-      cursor: 'pointer',
-      color: ThemeManager.getCurrentTheme().component.appBar.textColor,
-      backgroundColor: ThemeManager.getCurrentTheme().palette.primary1Color,
-      lineHeight: mui.Styles.Spacing.desktopKeylineIncrement + 'px',
-      paddingLeft: mui.Styles.Spacing.desktopGutter,
+    let styles = {
+      paper: {
+        backgroundColor: ThemeManager.getCurrentTheme().palette.primary1Color,
+        position: 'fixed',
+        height: ThemeManager.getCurrentTheme().component.appBar.height,
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1
+      },
+      tabsContainer: {
+        position: 'absolute',
+        right: 0,
+        bottom: 0
+      },
+      tabs: {
+        width: 300,
+        bottom: 0
+      },
+      tab: {
+        height: ThemeManager.getCurrentTheme().component.appBar.height
+      },
+      titleContainer: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        height: ThemeManager.getCurrentTheme().component.appBar.height,
+        color: ThemeManager.getCurrentTheme().component.appBar.textColor
+      },
+      titleIconButton: {
+        top: 5
+      },
+      titleIcon: {
+        color: ThemeManager.getCurrentTheme().component.appBar.textColor
+      },
+      contentContainer: {
+        paddingTop: ThemeManager.getCurrentTheme().component.appBar.height
+      }
     };
-
-    let header = (
-      <div style={headerLeftNavStyle} onTouchTap={this.onLeftNavHeaderClick}>Wall Street</div>
-    );
 
     return (
       <div>
-        <mui.AppBar title="Wall Street" onLeftIconButtonTouchTap={this.toggleLeftNav} />
-        <mui.LeftNav
-          ref="leftNav"
-          docked={false}
-          header={header}
-          menuItems={menuItems}
-          onChange={this.onLeftNavChange}
-          selectedIndex={this.getSelectedIndex()}
-        />
-        <Router.RouteHandler />
+        <mui.Paper zDepth={0} rounded={false} style={styles.paper}>
+          <div style={styles.titleContainer}>
+            <mui.IconButton
+              style={styles.titleIconButton}
+              iconClassName="material-icons"
+              iconStyle={styles.titleIcon}
+              onFocus={this.transitionToHome}
+            >
+              home
+            </mui.IconButton>
+            <strong>M83.</strong>
+            <small>HurryUp, We'reDreaming</small>
+          </div>
+          <div style={styles.tabsContainer}>
+            <mui.Tabs
+              onChange={this.transitionToRoute}
+              value={this.state.activeRoute}
+              style={styles.tabs}
+            >
+              {appRoutesData.map((tab) => {
+                return (
+                  <mui.Tab
+                    key={tab.route}
+                    value={tab.route}
+                    label={tab.label}
+                    route={tab.route}
+                    style={styles.tab}
+                  />
+                );
+              })}
+            </mui.Tabs>
+          </div>
+        </mui.Paper>
+        <div style={styles.contentContainer}>
+          <Router.RouteHandler />
+        </div>
       </div>
     );
   }
