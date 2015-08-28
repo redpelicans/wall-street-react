@@ -4,7 +4,7 @@ import axios from 'axios';
 class FofsActions {
   async getFofs() {
     try {
-      const response = await axios.get('http://rp1.redpelicans.com:6805/fofs');
+      const response = await axios.get('http://rp1.redpelicans.com:6807/fofs');
       this.actions.updateFofs(response.data);
     } catch (error) {
       this.actions.failFofs(error);

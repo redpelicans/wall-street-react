@@ -7,7 +7,7 @@ class DealsActions {
     try {
       let params = {};
       if (fofId) params.fofId = fofId;
-      const response = await axios.get('http://rp1.redpelicans.com:6805/deals', {params});
+      const response = await axios.get('http://rp1.redpelicans.com:6807/deals', {params});
       this.actions.updateDeals(response.data);
     } catch (error) {
       this.actions.failDeals(error);

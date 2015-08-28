@@ -8,7 +8,7 @@ var proxy = httpProxy.createProxyServer({changeOrigin: true, ws: true});
 var app = express();
 
 var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? process.env.PORT : 6804;
+var port = isProduction ? process.env.PORT : 6806;
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
@@ -37,7 +37,7 @@ if (!isProduction) {
     console.log('(dev) running on port ' + port);
   }); 
 
-  var jsonPort = 6805;
+  var jsonPort = 6807;
   var jsonDB = jsonServer.create();
   jsonDB.use(jsonServer.defaults);
   jsonDB.use(jsonServer.router('db.json'));

@@ -1,5 +1,6 @@
 import React from 'react';
 import mui from 'material-ui';
+import _ from 'lodash';
 import AltContainer from 'alt/AltContainer';
 import FofsStore from './fofs-store';
 import FofsActions from './fofs-actions';
@@ -7,34 +8,28 @@ import DealsStore from './deals-store';
 import DealsActions from './deals-actions';
 
 class DealsContainer extends React.Component {
+  componentDidMount() {
+    FofsActions.getFofs();
+  }
+
   render() {
     return (
       <div>
-        <ToolbarContainer />
         <ListContainer />
       </div>
     );
   }
 }
 
-class ToolbarContainer extends React.Component {
+class ListContainer extends React.Component {
   constructor() {
     super();
-    this.onChangeSelectedFofId = this.onChangeSelectedFofId.bind(this);
     this.onChangeDealsFilter = this.onChangeDealsFilter.bind(this);
   }
 
   componentWillMount() {
     // see http://stackoverflow.com/questions/23123138/perform-debounce-in-react-js
     this.onChangeDealsFilterThrottled = _.throttle(this.onChangeDealsFilterThrottled, 500, {leading: false});
-  }
-
-  componentDidMount() {
-    FofsActions.getFofs();
-  }
-
-  onChangeSelectedFofId(e, selectedIndex, menuItem) {
-    FofsActions.setSelectedFofId(menuItem.id);
   }
 
   onChangeDealsFilterThrottled(e) {
@@ -48,49 +43,8 @@ class ToolbarContainer extends React.Component {
 
   render() {
     return (
-      <AltContainer store={FofsStore}>
-        <ToolbarView
-          onChangeSelectedFofId={this.onChangeSelectedFofId}
-          onChangeDealsFilter={this.onChangeDealsFilter}
-        />
-      </AltContainer>
-    );
-  }
-}
-
-class ToolbarView extends React.Component {
-  render() {
-    return (
-      <mui.Toolbar>
-        <mui.ToolbarGroup key={0} float="left">
-          <mui.DropDownMenu
-            displayMember="label"
-            valueMember="id"
-            menuItems={this.props.fofs}
-            onChange={this.props.onChangeSelectedFofId}
-          />
-          {this.props.fofs.map((fof) => {
-            return (
-              <mui.FlatButton label={fof.label} />
-            );
-          })}
-        </mui.ToolbarGroup>
-        <mui.ToolbarGroup key={1} float="right">
-          <mui.TextField
-            hintText="Search in fund labels"
-            onChange={this.props.onChangeDealsFilter}
-          />
-        </mui.ToolbarGroup>
-      </mui.Toolbar>
-    );
-  }
-}
-
-class ListContainer extends React.Component {
-  render() {
-    return (
       <AltContainer store={DealsStore}>
-        <ListView />
+        <ListView onChangeDealsFilter={this.onChangeDealsFilter} />
       </AltContainer>
     );
   }
@@ -99,26 +53,67 @@ class ListContainer extends React.Component {
 class ListView extends React.Component {
   render() {
     return (
-      <table className="pure-table pure-table-horizontal pure-table-striped">
-        <thead>
-          <tr>
-            <td>Fof</td>
-            <td>Fund</td>
-            <td>Amount</td>
-          </tr>
-        </thead>
-        <tbody>
+      <mui.Table selectable={false}>
+        <mui.TableHeader displaySelectAll={false} adjustForCheckbox={false}>
+          <mui.TableRow>
+            <mui.TableHeaderColumn colSpan="3">
+              <DealsFilterView {...this.props} />
+            </mui.TableHeaderColumn>
+          </mui.TableRow>
+          <mui.TableRow>
+            <mui.TableHeaderColumn>Fof</mui.TableHeaderColumn>
+            <mui.TableHeaderColumn>Fund</mui.TableHeaderColumn>
+            <mui.TableHeaderColumn>Amount</mui.TableHeaderColumn>
+          </mui.TableRow>
+        </mui.TableHeader>
+        <mui.TableBody showRowHover={true} stripedRows={true} displayRowCheckbox={false}>
           {this.props.filteredDeals.map((deal) => {
             return (
-              <tr key={deal.id}>
-                <td>{deal.fof.label}</td>
-                <td>{deal.fund.label}</td>
-                <td>{deal.amount}</td>
-              </tr>
+              <mui.TableRow key={deal.id}>
+                <mui.TableRowColumn>{deal.fof.label}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.fund.label}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.amount}</mui.TableRowColumn>
+              </mui.TableRow>
             );
           })}
-        </tbody>
-      </table>
+        </mui.TableBody>
+      </mui.Table>
+    );
+  }
+}
+
+class DealsFilterView extends React.Component {
+  constructor() {
+    super();
+    this.state = {hintLabel: 'Search in fund labels'};
+    this.onFocusDealsFilter = this.onFocusDealsFilter.bind(this);
+    this.onBlurDealsFilter = this.onBlurDealsFilter.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({hint: _.isEmpty(this.props.filter)});
+    this.refs.dealsFilterTextField.setValue(this.props.filter);
+  }
+
+  onFocusDealsFilter() {
+    this.setState({hint: false});
+  }
+
+  onBlurDealsFilter(e) {
+    this.setState({hint: _.isEmpty(e.target.value)});
+  }
+
+  render() {
+    return (
+      <mui.TextField
+        ref="dealsFilterTextField"
+        hintText={this.state.hintLabel}
+        floatingLabelText={this.state.hint ? this.state.hintLabel : `Number of deals: ${this.props.filteredDeals.length}/${this.props.deals.length}`}
+        underlineStyle={{borderColor: 'transparent'}}
+        onChange={this.props.onChangeDealsFilter}
+        onFocus={this.onFocusDealsFilter}
+        onBlur={this.onBlurDealsFilter}
+      />
     );
   }
 }

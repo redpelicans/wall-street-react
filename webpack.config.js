@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: '#eval-source-map',
   entry: [
-    'webpack-dev-server/client?http://rp1.redpelicans.com:6804',
+    'webpack-dev-server/client?http://rp1.redpelicans.com:6806',
     'webpack/hot/dev-server',
     path.join(__dirname, 'app', 'index')
   ],
