@@ -52,27 +52,44 @@ class ListContainer extends React.Component {
 
 class ListView extends React.Component {
   render() {
+    let headers = [
+      'Fof',
+      'Fund',
+      'Amount',
+      'Trading date',
+      'Notice date',
+      'Price date',
+      'Payment date',
+      'Status',
+      'Trader'
+    ];
     return (
       <mui.Table selectable={false}>
         <mui.TableHeader displaySelectAll={false} adjustForCheckbox={false}>
           <mui.TableRow>
-            <mui.TableHeaderColumn colSpan="3">
+            <mui.TableHeaderColumn colSpan={headers.length}>
               <DealsFilterView {...this.props} />
             </mui.TableHeaderColumn>
           </mui.TableRow>
           <mui.TableRow>
-            <mui.TableHeaderColumn>Fof</mui.TableHeaderColumn>
-            <mui.TableHeaderColumn>Fund</mui.TableHeaderColumn>
-            <mui.TableHeaderColumn>Amount</mui.TableHeaderColumn>
+            {headers.map((header) => {
+              return <mui.TableHeaderColumn key={header}>{header}</mui.TableHeaderColumn>;
+            })}
           </mui.TableRow>
         </mui.TableHeader>
-        <mui.TableBody showRowHover={true} stripedRows={true} displayRowCheckbox={false}>
+        <mui.TableBody showRowHover={true} displayRowCheckbox={false}>
           {this.props.filteredDeals.map((deal) => {
             return (
               <mui.TableRow key={deal.id}>
                 <mui.TableRowColumn>{deal.fof.label}</mui.TableRowColumn>
                 <mui.TableRowColumn>{deal.fund.label}</mui.TableRowColumn>
                 <mui.TableRowColumn>{deal.amount}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.tradingDate}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.noticeDate}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.priceDate}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.paymentDate}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.status}</mui.TableRowColumn>
+                <mui.TableRowColumn>{deal.trader}</mui.TableRowColumn>
               </mui.TableRow>
             );
           })}

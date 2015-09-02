@@ -33,6 +33,11 @@ class App extends React.Component {
 
   componentWillMount() {
     this.setActiveRoute();
+    ThemeManager.setPalette({
+      accent1Color: mui.Styles.Colors.greenA100,
+      accent2Color: mui.Styles.Colors.greenA200,
+      accent3Color: mui.Styles.Colors.greenA400,
+    });
   }
 
   componentWillReceiveProps() {

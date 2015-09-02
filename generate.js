@@ -20,15 +20,28 @@ module.exports = function() {
     };
   });
 
-  data.deals = _.times(20, function(n) {
+  data.deals = _.times(1000, function(n) {
     var fof = data.fofs[_.random(0, data.fofs.length-1)];
+    var statuses = [
+      'What-if',
+      'Order pending',
+      'Order confirmed',
+      'Ticket pending',
+      'Deal confirmed'
+    ];
 
     return {
       id: n+1,
       fofId: fof.id, // json-server
       fof: fof,
       fund: data.funds[_.random(0, data.funds.length-1)],
-      amount: faker.finance.amount()
+      amount: faker.finance.amount(),
+      tradingDate: faker.date.past(),
+      noticeDate: faker.date.past(),
+      priceDate: faker.date.past(),
+      paymentDate: faker.date.past(),
+      status: statuses[_.random(0, statuses.length-1)],
+      trader: faker.name.findName()
     };
   });
 
